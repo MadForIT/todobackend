@@ -4,3 +4,4 @@ venv
 coverage.xml
 unittests.xml
 .coverage
+target
