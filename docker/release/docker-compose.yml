@@ -29,11 +29,10 @@ test:
   command: --reporter mocha-jenkins-reporter
 
 nginx:
-  image: nginx
+  build: .
+  dockerfile: Dockerfile.nginx
   links:
     - app
-  volumes:
-    - ./todobackend.conf:/etc/nginx/conf.d/todobackend.conf
   ports:
     - "8000:8000"
   volumes_from:
@@ -58,8 +57,6 @@ db:
 
 agent:
   image: madforit/ansible
-  volumes:
-    - ../../ansible/probe.yml:/ansible/site.yml
   links:
     - db
   environment:
@@ -67,3 +64,4 @@ agent:
     PROBE_PORT: "3306"
     PROBE_DELAY: 0
     PROBE_TIMEOUT: 180
+  command: ["probe.yml"]

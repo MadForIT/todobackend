@@ -14,18 +14,13 @@ test:
 builder:
   build: ../../
   dockerfile: docker/dev/dockerfile
-  volumes:
-    - ../../target:/wheelhouse
   volumes_from:
     - cache
   entrypoint: "entrypoint.sh"
   command: ["pip", "wheel","--no-index","-f /build","."]
 
-
 agent:
   image: madforit/ansible
-  volumes:
-    - ../../ansible/probe.yml:/ansible/site.yml
   links:
     - db
   environment:
@@ -33,6 +28,7 @@ agent:
     PROBE_PORT: "3306"
     PROBE_DELAY: 0
     PROBE_TIMEOUT: 180
+  command: ["probe.yml"]
 db:
   image: mysql:5.6
   hostname: db
