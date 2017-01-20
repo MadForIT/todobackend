@@ -1,6 +1,6 @@
 test:
   build: ../../
-  dockerfile: docker/dev/dockerfile
+  dockerfile: docker/dev/Dockerfile
   volumes_from:
     - cache
   links:
@@ -13,7 +13,7 @@ test:
     TEST_OUTPUT_DIR: /reports
 builder:
   build: ../../
-  dockerfile: docker/dev/dockerfile
+  dockerfile: docker/dev/Dockerfile
   volumes_from:
     - cache
   entrypoint: "entrypoint.sh"
