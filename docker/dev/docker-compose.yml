@@ -28,7 +28,7 @@ agent:
     PROBE_PORT: "3306"
     PROBE_DELAY: 0
     PROBE_TIMEOUT: 180
-  command: ["probe.yml"]
+  command: ["/ansible/probe.yml"]
 db:
   image: mysql:5.6
   hostname: db
