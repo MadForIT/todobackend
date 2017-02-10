@@ -2,7 +2,7 @@ FROM madforit/todobackend-base:latest
 MAINTAINER Ned Lukies <ned@madforit.com.au>
 
 RUN apt-get update && \
-    apt-get install -qy python-dev libmysqlclient-dev
+    apt-get install -qy python-dev libmysqlclient-dev libmysqlclient18
 
 RUN . /appenv/bin/activate && \
     pip install wheel --upgrade
